@@ -202,7 +202,7 @@ fs_open(const char *path, int flags, mode_t mode, size_t *chunk_size,
 	int16_t *cache_flags, int *set_metadata_p)
 {
 	int fd, r = 0;
-	size_t size;
+	size_t size = 0;
 
 	if ((flags & O_ACCMODE) == O_RDONLY) {
 		r = get_metadata(path, chunk_size, cache_flags, &size);
