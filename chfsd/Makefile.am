@@ -10,7 +10,13 @@ chfsd_SOURCES = chfsd.c ring.c ring_rpc.c fs_server.c host.c fs_hook.c \
 if USE_PMEMKV
 chfsd_SOURCES += fs_server_kv.c lock.c fs_kv.c pmemkv.c
 chkvdump_SOURCES = chkvdump.c lock.c fs_kv.c fs_hook.c flush.c pmemkv.c
-else
+endif
+
+if USE_NULL
+chfsd_SOURCES += fs_server_null.c lock.c fs_null.c
+endif
+
+if USE_POSIX
 chfsd_SOURCES += fs_server_posix.c lock.c fs_posix.c
 endif
 

@@ -113,6 +113,29 @@ if test x$with_pmemkv != xno; then
   PKG_CHECK_MODULES([LIBPMEMKV], [libpmemkv])
 fi
 
+AC_MSG_CHECKING([null])
+AC_ARG_WITH([null],
+  [AS_HELP_STRING([--with-null],
+    [])],
+  [], [with_null=no])
+AC_MSG_RESULT([$with_null])
+AM_CONDITIONAL([USE_NULL], [test x$with_null != xno])
+if test x$with_null != xno; then
+  AC_DEFINE([USE_NULL], [1], [Use null])
+fi
+
+AC_MSG_CHECKING([posix])
+AC_ARG_WITH([posix],
+  [AS_HELP_STRING([--with-posix],
+    [])],
+  [], [with_posix=no])
+AC_MSG_RESULT([$with_posix])
+AM_CONDITIONAL([USE_POSIX], [test x$with_posix != xno])
+if test x$with_posix != xno; then
+  AC_DEFINE([USE_POSIX], [1], [Use posix])
+fi
+
+
 AC_MSG_CHECKING([abt-io])
 AC_ARG_WITH([abt-io],
   [AS_HELP_STRING([--with-abt-io],
